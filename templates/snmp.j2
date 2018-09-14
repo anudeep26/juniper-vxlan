@@ -1,0 +1,7 @@
+{% if snmp is defined and snmp %}
+set snmp location {{ snmp.snmp_location }}
+set snmp contact {{ snmp.snmp_contact }}
+{% for comm,comm_type in snmp.snmp_comms.items() %}
+set snmp community {{ comm }} authorization {{ comm_type }}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,10 @@
+[all:vars]
+ansible_user=juniper
+ansible_ssh_pass=juniper123
+ansible_network_os=junos
+vdms_api=netconf
+vdms_vendor=juniper
+
+[junos-spine]
+spine1.cvr
+spine2.cvr

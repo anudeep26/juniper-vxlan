@@ -1,0 +1,7 @@
+---
+snmp:
+  snmp_location: LOSANGELES
+  snmp_contact: NetEng
+  snmp_comms:
+     vdms: read-only
+     vdms-private: read-write

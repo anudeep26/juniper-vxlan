@@ -1,0 +1,16 @@
+- name: PLAY 4 AUDIT
+  hosts: junos-spine
+  connection: netconf
+  gather_facts: no
+
+  tasks:
+
+    - name: TASK to gather config
+      junos_command:
+        commands: show configuration
+        display: set
+      register: config
+     
+    - debug: 
+        var: config
+              

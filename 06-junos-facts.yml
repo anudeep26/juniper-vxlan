@@ -1,0 +1,16 @@
+---
+
+- name: PLAY to gather facts
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Gather facts
+      junos_facts:
+
+    - debug:
+        var: ansible_facts
+
+    - debug:
+        var: ansible_net_version

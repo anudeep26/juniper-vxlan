@@ -1,0 +1,13 @@
+---
+
+- name: PLAY 5
+  hosts: spine2.cvr
+  connection: netconf
+  gather_facts: no
+
+
+  tasks:
+    - name: TASK 5
+      junos_config:
+        lines:
+          - set interfaces lo0 unit 0 family inet address 10.{{ site_id }}.{{ mgmt_network }}.{{ node_id }}/32

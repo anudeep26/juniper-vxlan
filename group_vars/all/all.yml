@@ -1,0 +1,12 @@
+---
+
+mgmt_network: 100
+
+snmp:
+  snmp_location: LOSANGELES
+  snmp_contact: NetEng
+  snmp_comms:
+    - community: vdms
+      type: read-only
+    - community: vdms-private
+      type: read-write
