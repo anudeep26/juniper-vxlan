@@ -1,0 +1,43 @@
+---
+- name: PLAY1 - Create Directories
+  hosts: junos-spine
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - file:
+        path: ./host_vars/{{ inventory_hostname }}
+        state: directory
+
+    - file: 
+        path: ./templates
+        state: directory
+
+    - file:
+        path: ./configs/{{ inventory_hostname }}
+        state: directory
+
+    - file:
+        path: ./group_vars
+        state: directory
+
+- name: PLAY2 - Generate routing-options config
+  hosts: junos-spine
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - template:
+        src: routing-options.j2
+        dest: ./configs/{{ inventory_hostname }}/{{ inventory_hostname }}-routing-options.conf
+
+- name: PLAY3 - Generate forwarding-options config
+  hosts: junos-spine
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - template:
+        src: forwarding-options.j2
+        dest: ./configs/{{ inventory_hostname }}/{{ inventory_hostname }}-forwarding-options.conf

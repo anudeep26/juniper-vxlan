@@ -1,0 +1,18 @@
+routing-options {
+    nonstop-routing;
+    {% if static_routes is defined and static_routes %}
+    static {
+    {% for route,params in static_routes.v4.items() %}
+        route {{ route }} next-hop {{ params.next_hop }};
+    {% endfor %}
+    }
+    {% endif %}
+    forwarding-table {
+        export [ LOAD_BALANCE LOAD_BALANCE_PER_FLOW ];
+        chained-composite-next-hop {
+            ingress {
+                evpn;
+            }
+        }
+    }
+}
